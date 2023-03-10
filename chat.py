@@ -74,7 +74,7 @@ def sample_sequences(loader):
     saves = []
     gt_emotions = []
     pred_emotions = []
-    openai_key = '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'
+    openai_key = "your openai key"
     set_openai_key(openai_key)
 
     for i, batch in enumerate(loader):
