@@ -54,7 +54,7 @@ parser.add_argument('--finetune', default=False, action="store_true")
 parser.add_argument('--eval', default=False, action="store_true")
 parser.add_argument('--answerer', default=False, action="store_true")
 parser.add_argument('--dialog', default=True, action="store_true")
-parser.add_argument('--checkpoint', default='/ibex/ai/home/shenx/visdial/vad_bert/checkpoints/trained_roberta_2023_02_01_02_10_14')
+parser.add_argument('--checkpoint', default='trained_roberta_2023_02_01_02_10_14')
 # parser.add_argument('--balance', action='store_true')
 args = parser.parse_args()
 # pdb.set_trace()
@@ -130,7 +130,7 @@ torch.cuda.manual_seed_all(seed_val)
 
 model.eval()
 
-with open('/ibex/ai/home/shenx/visdial/vad_bert/goemotion_scripts/test_with_options.pickle', 'rb') as f:
+with open('test_with_options.pickle', 'rb') as f:
     data = pickle.load(f)
 
 infos = []

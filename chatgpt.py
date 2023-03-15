@@ -53,10 +53,9 @@ class VQAXEvalDataset(Dataset):
         text_a = 'Give the below conversation talking about an artwork: '
         text_a += proc_ques(sample['caption1'])
         text_a += proc_ques(sample['caption2'])
-        
-        
-        # for ut in sample['conversation']:
-        #     text_a += proc_ques(ut)
+
+        for ut in sample['conversation']:
+            text_a += proc_ques(ut)
 
         text_a += proc_ques(' What is the emotion the artwork renders? Please choose one emotion only from [excitement\, sadness\, anger\, contentment\, something else\, disgust\, fear\, amusement and awe]. Give me just one-word answer')
 
@@ -123,15 +122,9 @@ finetune_pretrained = args.finetune  # if True, finetunes from the image caption
 eval_batch_size = 1
 img_size = 224
 ckpt_path = args.ckpt_path
-# if not os.path.exists(ckpt_path):
-#     os.mkdir(ckpt_path)
-#     os.mkdir(ckpt_path+'/results')
-caption_save_path = 'cococaption/results/'
-annFileExp = 'cococaption/annotations/vqaX_test_annot_exp.json'
-annFileFull = 'cococaption/annotations/vqaX_test_annot_full.json'
-nle_data_train_path = '/ibex/scratch/shenx/visdial/data/corrected_train_data.pickle'
-nle_data_eval_path = '/ibex/scratch/shenx/visdial/data/corrected_val_data.pickle'
-nle_data_test_path = '/ibex/scratch/shenx/visdial/data/test_data.pkl'
+nle_data_train_path = 'train_data.pickle'
+nle_data_eval_path = 'val_data.pickle'
+nle_data_test_path = 'test_data.pkl'
 max_seq_len = 400
 no_sample = True
 top_k = 0

@@ -232,7 +232,7 @@ class VQAXEvalDataset(Dataset):
     def __len__(self):
         return len(self.ids_list)
 
-train_dataset = VQAXTrainDataset(path='/ibex/scratch/shenx/visdial/data/corrected_train_data.pickle',
+train_dataset = VQAXTrainDataset(path='train_data.pickle',
                                  transform=img_transform,
                                  tokenizer=tokenizer,
                                  max_seq_len=512)
@@ -242,7 +242,7 @@ train_loader = torch.utils.data.DataLoader(train_dataset,
                                             shuffle=True,
                                             pin_memory=True)
 
-eval_dataset = VQAXEvalDataset(path = '/ibex/scratch/shenx/visdial/data/corrected_val_data.pickle',
+eval_dataset = VQAXEvalDataset(path = 'val_data.pickle',
                                 transform=img_transform,
                                 tokenizer=tokenizer,
                                 max_seq_len=512)
@@ -376,7 +376,7 @@ for epoch_i in range(0, epochs):
     model.eval()
 
     current_time = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-    model.save_pretrained(f'/ibex/scratch/shenx/vad_bert/checkpoints/trained_roberta_{epoch_i}_{current_time}')
+    model.save_pretrained(f'trained_roberta_{epoch_i}_{current_time}')
     
     eval_loss, eval_accuracy, eval_recall = 0, 0, 0
     nb_eval_steps = 0
@@ -416,7 +416,7 @@ for epoch_i in range(0, epochs):
 print("Training complete!",flush=True)
 
 current_time = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-model.save_pretrained(f'/ibex/scratch/shenx/vad_bert/checkpoints/trained_roberta_{current_time}')
+model.save_pretrained(f'trained_roberta_{current_time}')
 
 # with open(f'/ibex/scratch/mohameys/text_to_emotions/go_models/{out_file}_trained_bert_{current_time}.pkl', 'wb') as f:
 #     pickle.dump(model, f)
